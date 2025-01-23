@@ -30,7 +30,7 @@ Before setting up the project, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone [<repository-url>](https://github.com/One-Health-Portal/onehealth_portal_backend.git)
+git clone https://github.com/One-Health-Portal/onehealth_portal_backend.git
 cd onehealth_portal_backend
 ```
 
