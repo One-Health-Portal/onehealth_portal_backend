@@ -21,7 +21,7 @@ Before setting up the project, ensure you have the following installed:
 - **Python 3.11+**
 - **MySQL Server 8.0+**
 - **pip** (Python package manager)
-- **Node.js 18+** (for frontend integration, if applicable)
+- **Node.js 18+** (for frontend integration)
 
 ---
 
@@ -31,7 +31,7 @@ Before setting up the project, ensure you have the following installed:
 
 ```bash
 git clone [<repository-url>](https://github.com/One-Health-Portal/onehealth_portal_backend.git)
-cd portal_backend
+cd onehealth_portal_backend
 ```
 
 ### 2. Create a Virtual Environment
