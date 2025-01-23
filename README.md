@@ -1,47 +1,58 @@
 # One Health Portal Backend
 
-A comprehensive healthcare management system built with FastAPI, featuring appointment scheduling, patient management, and ML-based disease prediction.
+A comprehensive healthcare management system built with **FastAPI**, featuring appointment scheduling, patient management, and ML-based disease prediction. This backend powers the One Health Portal, providing APIs for user authentication, appointment management, lab test scheduling, and more.
+
+---
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Setup Instructions](#setup-instructions)
-- [API Documentation](#api-documentation)
-- [Database Schema](#database-schema)
-- [Features](#features)
-- [Security](#security)
-- [Error Handling](#error-handling)
+1. [Prerequisites](#prerequisites)
+2. [Setup Instructions](#setup-instructions)
+3. [API Documentation](#api-documentation)
+4. [Database Schema](#database-schema)
+5. [Security](#security)
+
+---
 
 ## Prerequisites
 
-- Python 3.11+
-- MySQL Server 8.0+
-- pip
-- Node.js 18+ (for frontend integration)
+Before setting up the project, ensure you have the following installed:
+
+- **Python 3.11+**
+- **MySQL Server 8.0+**
+- **pip** (Python package manager)
+- **Node.js 18+** (for frontend integration, if applicable)
+
+---
 
 ## Setup Instructions
 
-### 1. Environment Setup
+### 1. Clone the Repository
 
-# Clone repository
-
-git clone <repository-url>
+```bash
+git clone [<repository-url>](https://github.com/One-Health-Portal/onehealth_portal_backend.git)
 cd portal_backend
+```
 
-# Create virtual environment
+### 2. Create a Virtual Environment
 
+```bash
 python -m venv venv
-source venv/bin/activate # Linux/Mac
-.\venv\Scripts\activate # Windows
+source venv/bin/activate  # Linux/Mac
+.\venv\Scripts\activate   # Windows
+```
 
-# Install dependencies
+### 3. Install Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-### 2. Environment Configuration
+### 4. Configure Environment Variables
 
-Create `.env` file with:
+Create a `.env` file in the root directory with the following variables:
 
+```env
 SUPABASE_URL=your_supabase_url
 SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
@@ -51,17 +62,33 @@ CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_secret
 CLOUDINARY_URL=cloudinary://api_key:api_secret@cloud_name
+```
 
-### 3. Database Setup
+### 5. Set Up the Database
 
-CREATE DATABASE onehealthportal;
-mysql -u root -p onehealthportal < database.sql
+1. Import the database:
+   ```sql
+   CREATE DATABASE onehealthportal;
+   ```
 
-### 4. Start Server
+2. Import the database schema:
+   ```bash
+   mysql -u root -p onehealthportal < database.sql
+   ```
 
+### 6. Start the Server
+
+```bash
 python run.py
+```
+
+The backend server will start running at `http://localhost:8000`.
+
+---
 
 ## API Documentation
+
+The backend provides a comprehensive set of APIs for managing users, appointments, lab tests, and more. Below is a summary of the available endpoints.
 
 ### Authentication Endpoints
 
@@ -201,41 +228,37 @@ python run.py
 | GET    | `/api/dashboard/appointments/analytics` | Get appointment analytics | -            | `AppointmentAnalyticsResponse`   |
 | GET    | `/api/dashboard/performance`            | Get performance metrics   | -            | `PerformanceMetricsResponse`     |
 
+---
+
 ## Database Schema
 
-## Features
+The database schema includes tables for users, appointments, lab tests, hospitals, doctors, and more. Below is a high-level overview:
 
-### Authentication & Security
+- **Users**: Stores user information (patients, doctors, admins).
+- **Appointments**: Manages appointment details (date, time, doctor, patient).
+- **LabTests**: Tracks lab test schedules and results.
+- **Hospitals**: Stores hospital information.
+- **Doctors**: Manages doctor profiles and specialties.
+- **Payments**: Tracks payment details for appointments and lab tests.
 
-- Supabase integration for user management
-- Two-factor authentication via email
-- JWT token-based authentication
-- Role-based access control (Patient/Admin/Staff)
+For the full schema, refer to the `database.sql` file.
 
-### File Management
-
-- Cloudinary integration for file storage
-- Profile picture upload support
-- PDF report generation
-
-### ML Integration
-
-- Disease prediction from symptoms
-- Confidence scoring
-- Specialty recommendations
+---
 
 ## Security
 
 ### Authentication Flow
 
-1. User registers/logs in through Supabase
-2. Backend verifies Supabase JWT
-3. Optional 2FA verification
-4. Session management with refresh tokens
+1. User registers/logs in through Supabase.
+2. Backend verifies Supabase JWT.
+3. Optional 2FA verification.
+4. Session management with refresh tokens.
 
 ### Data Protection
 
-- Database connection pooling
-- Prepared statements
-- Input validation using Pydantic
-- Rate limiting on sensitive endpoints
+- **Database Connection Pooling**: Ensures efficient and secure database connections.
+- **Prepared Statements**: Prevents SQL injection attacks.
+- **Input Validation**: Uses Pydantic for robust input validation.
+- **Rate Limiting**: Protects sensitive endpoints from abuse.
+
+---
